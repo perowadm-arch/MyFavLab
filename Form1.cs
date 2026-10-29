@@ -147,6 +147,21 @@ namespace WindowsFormsApp4._2
             else
             {
                 PersonasList = Base.Find(name, data, fac);
+                foreach(var item in Base.getAll())
+                {
+                    if (Base.FindAbiturient(fac).Count != 0)
+                    {
+                        PersonasList = Base.FindAbiturient(fac);
+                    }
+                    else if (Base.FindStudent(course).Count != 0)
+                    {
+                        PersonasList = Base.FindStudent(course);
+                    }
+                    else if (Base.FindTeacher(titl, exxp).Count != 0)
+                    {
+                        PersonasList = Base.FindTeacher(titl, exxp);
+                    }
+                }
             }
                 //else
                 //{
