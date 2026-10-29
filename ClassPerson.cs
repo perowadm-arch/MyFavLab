@@ -36,12 +36,22 @@ namespace PersonClass
         /// Функція для виводу інформації про персону в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказану персону</returns>
+        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
         public abstract string Info(DateTime Today);
 
+        /// <summary>
+        /// Дата народження
+        /// </summary>
         public DateTime Date { get { return BirthDate; } set { BirthDate = value; } }
 
+        /// <summary>
+        /// Ім'я
+        /// </summary>
         public string PName { get { return Name; } set { Name = value; } }
 
+        /// <summary>
+        /// Факультет
+        /// </summary>
         public string Fac { get { return Facultet; } set { Facultet = value; } }
 
 
@@ -71,17 +81,18 @@ namespace PersonClass
         /// </summary>
         private int Course;
 
-        
-
-        
+        /// <summary>
+        /// Номер курсу
+        /// </summary>
         public int CourseNum { get { return Course; } set { Course = value; } }
 
-        
+
 
         /// <summary>
         /// Функція для втводу інформації про СТУДЕНТА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного студента</returns>
+        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             string c = Course.ToString();
@@ -95,6 +106,7 @@ namespace PersonClass
         /// <summary>
         /// Функція для запису інформації про СТУДЕНТА в один рядок
         /// </summary>
+        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету, ціле число курсу.</param>
         public void addInfoSt(string name, DateTime bd,  string fac, int course)
         {
             this.PName = name;
@@ -118,6 +130,7 @@ namespace PersonClass
         /// Функція для виводу інформації про АБІТУРІЄНТА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного абітурієнта</returns>
+        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             int ageStud = seeAge(Today);
@@ -130,6 +143,7 @@ namespace PersonClass
         /// <summary>
         /// Функція для запису інформації про АБІТУРІЄНТА в один рядок
         /// </summary>
+        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету.</param>
         public void addInfoAb(string name, DateTime bd, string fac)
         {
 
@@ -162,16 +176,22 @@ namespace PersonClass
         private int Exp;
 
 
-       
 
+        /// <summary>
+        /// Посада
+        /// </summary>
         public string TitleTeach { get { return Title; } set { Title = value; } }
 
+        /// <summary>
+        /// Роки досвіду
+        /// </summary>
         public int YearsExperience { get { return Exp; } set { Exp = value; } }
 
         /// <summary>
         /// Функція для виводу інформації про ВИКЛАДАЧА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного викладача</returns>
+        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             string e = Exp.ToString();
@@ -186,6 +206,7 @@ namespace PersonClass
         /// <summary>
         /// Функція для виводу інформації про ВИКЛАДАЧА в один рядок
         /// </summary>
+        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету, ціле число досвіду, рядок посади.</param>
         public void addInfoTh(string name, DateTime bd, string fac, int exp, string titl)
         {
             this.PName = name;
@@ -211,6 +232,7 @@ namespace PersonClass
         /// <summary>
         /// Функція для додавання нової персони в список storage
         /// </summary>
+        /// <param>Змінну типу Persona.</param>
         public void add(Persona persona)
         {
             storage.Add(persona);
@@ -229,6 +251,7 @@ namespace PersonClass
         /// Функція для знаходження інформації про персону за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про персон, з якими відбувся збіг після пошуку</returns>
+        /// <param>Необов'язковий рядок ім'я, необов'язкову змінну типу DateTime, необов'язковий рядок факултету</param>
         public List<Persona> Find(string name = null, DateTime? birthdate = null, string fac = null)
         {
             List<Persona> tempStorage = new List<Persona>();
@@ -297,6 +320,7 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно студентів за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про студентів, з якими відбувся збіг після пошуку</returns>
+        /// <param>Необов'язкове ціле число курсу</param>
         public List<Persona> FindStudent(int? course = null)
         {
 
@@ -344,6 +368,7 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно абітурієнта за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про абітурієнтів, з якими відбувся збіг після пошуку</returns>
+        /// <param>Необов'язковий рядок факултету</param>
         public List<Persona> FindAbiturient(string fac = null)
         {
             List<Persona> tempStorage = new List<Persona>();
@@ -387,6 +412,7 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно викладача за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про викладачів, з якими відбувся збіг після пошуку</returns>
+        /// <param>Необов'язковий рядок посади, необов'язкове ціле число досвіду</param>
         public List<Persona> FindTeacher(string title = null, int? exp = null)
         {
 

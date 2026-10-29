@@ -153,35 +153,19 @@ namespace WindowsFormsApp4._2
                     {
                         PersonasList = Base.FindAbiturient(fac);
                     }
-                    else if (Base.FindStudent(course).Count != 0)
+                    if (Base.FindStudent(course).Count != 0)
                     {
                         PersonasList = Base.FindStudent(course);
                     }
-                    else if (Base.FindTeacher(titl, exxp).Count != 0)
+                    if (Base.FindTeacher(titl, exxp).Count != 0)
                     {
                         PersonasList = Base.FindTeacher(titl, exxp);
                     }
                 }
             }
-                //else
-                //{
-                //    if (Base.FindAbiturient(fac) != null)
-                //    {
-                //        PersonasList = Base.FindAbiturient(fac);
-                //    }
-                //    else if (Base.FindStudent(course, fac) != null)
-                //    {
-                //        PersonasList = Base.FindStudent(course, fac);
-                //    }
-                //    else if (Base.FindTeacher(fac, titl, exxp) != null)
-                //    {
-                //        PersonasList = Base.FindTeacher(fac, titl, exxp);
-                //    }
-                //}
+               
 
-                //почему оно не ищет людей по факультету и тд
-
-                string Information = "";
+            string Information = "";
 
             foreach (var item in PersonasList)
             {
