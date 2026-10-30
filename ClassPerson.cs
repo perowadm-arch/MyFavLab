@@ -325,11 +325,11 @@ namespace PersonClass
 
                 if ((from != null) && (to != null))
                 {
-                    if (!(from <= item.seeAge((DateTime)Today)) && !(item.seeAge((DateTime)Today) >= to))
+                    if (!(from <= item.seeAge((DateTime)Today)) && !(item.seeAge((DateTime)Today) <= to))
                     {
                         findbydia = false;
                     }
-                    else
+                    else if((from <= item.seeAge((DateTime)Today)) && (item.seeAge((DateTime)Today) <= to))
                     {
                         findbydia = true;
 
