@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PersonClass;
+using System.Xml.Linq;
 
 namespace WindowsFormsApp4._2
 {
@@ -209,6 +210,39 @@ namespace WindowsFormsApp4._2
         private void clear_Click(object sender, EventArgs e)
         {
             foundPerson.Clear();
+        }
+
+        private void FindByAge_Click(object sender, EventArgs e)
+        {
+            DateTime today = dateTimePicker1.Value;
+            if ((int.TryParse(From.Text, out int from) && (int.TryParse(To.Text, out int to)))){
+
+                foreach (var item in Base.getAll())
+                {
+
+                    PersonasList = Base.Find(null,null,null,from,to,today);
+
+                }
+            }
+
+            string Information = "";
+
+            foreach (var item in PersonasList)
+            {
+                Information += item.Info(today) + "\r\n\n";
+            }
+
+            foundPerson.Text = Information;
+        }
+
+        private void From_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void To_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

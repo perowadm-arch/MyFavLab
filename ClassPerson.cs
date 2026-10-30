@@ -36,7 +36,7 @@ namespace PersonClass
         /// Функція для виводу інформації про персону в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказану персону</returns>
-        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
         public abstract string Info(DateTime Today);
 
         /// <summary>
@@ -59,6 +59,7 @@ namespace PersonClass
         /// Функція для підрахунку віку персони за вказаною датою народження та сьогоднішньою датою
         /// </summary>
         /// <returns>Ціле число, вік персони</returns>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
         public int seeAge(DateTime Today)
         {
             return Today.Year - Date.Year;
@@ -92,7 +93,7 @@ namespace PersonClass
         /// Функція для втводу інформації про СТУДЕНТА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного студента</returns>
-        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             string c = Course.ToString();
@@ -106,7 +107,10 @@ namespace PersonClass
         /// <summary>
         /// Функція для запису інформації про СТУДЕНТА в один рядок
         /// </summary>
-        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету, ціле число курсу.</param>
+        /// <param name = "name">Рядок ім'я</param>
+        /// <param name = "bd">Дата народження типу DateTime</param>
+        /// <param name = "fac">Рядок факультету</param>
+        /// <param name = "course">Ціле число курсу</param>
         public void addInfoSt(string name, DateTime bd,  string fac, int course)
         {
             this.PName = name;
@@ -130,7 +134,7 @@ namespace PersonClass
         /// Функція для виводу інформації про АБІТУРІЄНТА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного абітурієнта</returns>
-        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             int ageStud = seeAge(Today);
@@ -143,7 +147,9 @@ namespace PersonClass
         /// <summary>
         /// Функція для запису інформації про АБІТУРІЄНТА в один рядок
         /// </summary>
-        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету.</param>
+        /// <param name = "name">Рядок ім'я</param>
+        /// <param name = "bd">Дата народження типу DateTime</param>
+        /// <param name = "fac">Рядок факультету</param>
         public void addInfoAb(string name, DateTime bd, string fac)
         {
 
@@ -191,7 +197,7 @@ namespace PersonClass
         /// Функція для виводу інформації про ВИКЛАДАЧА в один рядок
         /// </summary>
         /// <returns>Рядок з інформацією про вказаного викладача</returns>
-        /// <param>Змінну типу DateTime як нинішню дату для розрахунку віку.</param>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
         public override string Info(DateTime Today)
         {
             string e = Exp.ToString();
@@ -206,7 +212,11 @@ namespace PersonClass
         /// <summary>
         /// Функція для виводу інформації про ВИКЛАДАЧА в один рядок
         /// </summary>
-        /// <param>Рядок ім'я, дату народження типу DateTime, рядок факультету, ціле число досвіду, рядок посади.</param>
+        /// <param name = "name">Рядок ім'я</param>
+        /// <param name = "bd">Дата народження типу DateTime</param>
+        /// <param name = "fac">Рядок факультету</param>
+        /// <param name = "exp">Ціле число досвіду</param>
+        /// <param name = "titl">Рядок посади</param>
         public void addInfoTh(string name, DateTime bd, string fac, int exp, string titl)
         {
             this.PName = name;
@@ -232,7 +242,7 @@ namespace PersonClass
         /// <summary>
         /// Функція для додавання нової персони в список storage
         /// </summary>
-        /// <param>Змінну типу Persona.</param>
+        /// <param name="persona">Змінна типу Persona.</param>
         public void add(Persona persona)
         {
             storage.Add(persona);
@@ -251,17 +261,25 @@ namespace PersonClass
         /// Функція для знаходження інформації про персону за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про персон, з якими відбувся збіг після пошуку</returns>
-        /// <param>Необов'язковий рядок ім'я, необов'язкову змінну типу DateTime, необов'язковий рядок факултету</param>
-        public List<Persona> Find(string name = null, DateTime? birthdate = null, string fac = null)
+        /// <param name = "name">Необов'язковий рядок ім'я</param>
+        /// <param name = "birthdate">Необов'язкова дата народження типу DateTime</param>
+        /// <param name = "fac">Необов'язковий рядок факультету</param>
+        /// <param name = "from">Необов'язкове ціле число нижньої границі діапазону</param>
+        /// <param name = "to">Необов'язкове ціле число вищої границі діапазону</param>
+        /// <param name = "Today">Змінна типу DateTime як нинішню дату для розрахунку віку.</param>
+
+        public List<Persona> Find(string name = null, DateTime? birthdate = null, string fac = null, int? from = null, int? to = null, DateTime? Today = null)
         {
             List<Persona> tempStorage = new List<Persona>();
             
+
             foreach (var item in storage)
             {
                 //bool p = true;
                 bool pname = false;
                 bool pbd = false;
                 bool pfac = false;
+                bool findbydia = false;
 
                 if (name != null)
                 {
@@ -305,7 +323,20 @@ namespace PersonClass
                     }
                 }
 
-                if (pname || pbd || pfac)
+                if ((from != null) && (to != null))
+                {
+                    if (!(from <= item.seeAge((DateTime)Today)) && !(item.seeAge((DateTime)Today) >= to))
+                    {
+                        findbydia = false;
+                    }
+                    else
+                    {
+                        findbydia = true;
+
+                    }
+                }
+
+                if (pname || pbd || pfac || findbydia)
                 {
                     tempStorage.Add(item);
                 }
@@ -320,7 +351,8 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно студентів за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про студентів, з якими відбувся збіг після пошуку</returns>
-        /// <param>Необов'язкове ціле число курсу</param>
+        /// <param name = "course">Необов'язкове ціле число курсу</param>
+        
         public List<Persona> FindStudent(int? course = null)
         {
 
@@ -368,7 +400,7 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно абітурієнта за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про абітурієнтів, з якими відбувся збіг після пошуку</returns>
-        /// <param>Необов'язковий рядок факултету</param>
+        /// <param name = "fac">Необов'язковий рядок факультету</param>
         public List<Persona> FindAbiturient(string fac = null)
         {
             List<Persona> tempStorage = new List<Persona>();
@@ -412,7 +444,8 @@ namespace PersonClass
         /// Функція для знаходження інформації про конкретно викладача за заданими параметрами
         /// </summary>
         /// <returns>Список інформації про викладачів, з якими відбувся збіг після пошуку</returns>
-        /// <param>Необов'язковий рядок посади, необов'язкове ціле число досвіду</param>
+        /// <param name = "title">Необов'язковий рядок посади</param>
+        /// <param name = "exp">Необов'язкове ціле число досвіду</param>
         public List<Persona> FindTeacher(string title = null, int? exp = null)
         {
 

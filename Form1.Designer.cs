@@ -49,6 +49,12 @@
             this.show = new System.Windows.Forms.Button();
             this.expBox = new System.Windows.Forms.TextBox();
             this.clear = new System.Windows.Forms.Button();
+            this.From = new System.Windows.Forms.TextBox();
+            this.To = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.FindByAge = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -240,11 +246,70 @@
             this.clear.UseVisualStyleBackColor = true;
             this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
+            // From
+            // 
+            this.From.Location = new System.Drawing.Point(293, 26);
+            this.From.Name = "From";
+            this.From.Size = new System.Drawing.Size(58, 20);
+            this.From.TabIndex = 25;
+            this.From.TextChanged += new System.EventHandler(this.From_TextChanged);
+            // 
+            // To
+            // 
+            this.To.Location = new System.Drawing.Point(372, 26);
+            this.To.Name = "To";
+            this.To.Size = new System.Drawing.Size(67, 20);
+            this.To.TabIndex = 26;
+            this.To.TextChanged += new System.EventHandler(this.To_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(357, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "-";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(290, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "from";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(423, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "to";
+            // 
+            // FindByAge
+            // 
+            this.FindByAge.Location = new System.Drawing.Point(292, 81);
+            this.FindByAge.Name = "FindByAge";
+            this.FindByAge.Size = new System.Drawing.Size(147, 39);
+            this.FindByAge.TabIndex = 30;
+            this.FindByAge.Text = "FIND BY AGE";
+            this.FindByAge.UseVisualStyleBackColor = true;
+            this.FindByAge.Click += new System.EventHandler(this.FindByAge_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.FindByAge);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.To);
+            this.Controls.Add(this.From);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.expBox);
             this.Controls.Add(this.show);
@@ -298,6 +363,12 @@
         private System.Windows.Forms.Button show;
         private System.Windows.Forms.TextBox expBox;
         private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.TextBox From;
+        private System.Windows.Forms.TextBox To;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button FindByAge;
     }
 }
 
